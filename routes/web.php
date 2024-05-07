@@ -20,7 +20,5 @@ Route::get('/', function () {
 Route::get("/students/create",[StudentController::class,"create"])->name('students.create');
 Route::post("/students",[StudentController::class,"store"])->name('students.store');
 Route::post('/test',function(Request $request){dd($request->all());})->name('test');
-
-Route::get('/collection/students/store',function(){
-    return view('students.store');
-})->name('students.collection');
+Route::get('/collection/students/store',[StudentController::class,"index"])->name('students.collection');
+Route::put("/students/update/{id}",[StudentController::class,"update"])->name("students.update");

@@ -21,7 +21,6 @@
         }
       </style>
     <body>
-    
         <br><br><br>
     <table class="table p-3 space-around" style="width: 800px; position:center; margin-left:24rem;">
         <thead>
@@ -30,17 +29,20 @@
                 <th scope="col">First_name</th>
                 <th scope="col">Last_name</th>
                 <th scope="col">age</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
-            
+            @foreach($students as $student)
             <tr>
-                <th scope="row">1</th>
-                <td>tititiiti</td>
-                <td>poupoupou</td>
-                <td>pupupu</td>
+                <th scope="row">{{$student->id}}</th>
+                <td>{{$student->first_name}}</td>
+                <td>{{$student->last_name}}</td>
+                <td>{{$student->age}}</td>
+                <td><button class="btn btn-outline-success"><a href="{{ route('students.edition',$student->id)}}">edit</a></button>&nbsp;<button class="btn btn-outline-success"><a href="{{ route('students.update',$student)}}">delete</a></button></td>
+                <td></td>
             </tr>
-            
+            @endforeach
         </tbody>
     </table>
     <button type="submit" class="btn btn-success m-3"><a href="{{route('students.create')}}">Add students</a></button>

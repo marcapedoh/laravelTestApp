@@ -8,8 +8,8 @@ use App\Models\Students;
 class StudentController extends Controller
 {
     public function index(){
-        $student = Students::all();
-        return view('students.store', ['students' => $student]);
+        $students = Students::all();
+        return view('students.index', compact('students'));
     }
 
     public function create(){
@@ -33,7 +33,7 @@ class StudentController extends Controller
         $students->last_name= $request->last_name;
         $students->age= $request->age;
         $students->save();
-        return view("students.store");
+        return view("students.collection");
     }
 
     public function update(){
